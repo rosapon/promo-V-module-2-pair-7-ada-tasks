@@ -2,15 +2,6 @@
     list-style: none;
 }
 
-.task-list li::before {
-    content;
-}
-
-.crossout {
-    text-decoration: overline;
-
-}
-
 *{
     margin: 0px;
     padding: 0px;
