@@ -23,4 +23,3 @@ const handleClick = (event) => {
 addBtn.addEventListener('click', handleClick);
 
 
-
