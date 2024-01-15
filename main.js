@@ -6,40 +6,99 @@ const inputFilter = document.querySelector('.js-text-task-filter');
 const searchBtn = document.querySelector('js-btn-filter');
 const taskList = document.querySelector('.js-task-list');
 const inputList = document.querySelector('.js-inputList');
-const itemOfTheList = document.querySelector('.item');
+const li = document.querySelector('.js-li');
+
+
+
 
 const tasks = [
+    { name: 'Recoger setas en el campo', completed: true },
+    { name: 'Comprar pilas', completed: true },
+    { name: 'Poner una lavadora de blancos', completed: true },
+    {
+      name: 'Aprender cómo se realizan las peticiones al servidor en JavaScript',
+      completed: false,
+    },
+  ];
+
+console.log(tasks[0]);
+
+
+
+const renderTask = () => {
+    for (let eachTask of tasks) {
+    taskList.innerHTML += `<li>
+    <input type="checkbox">
+    <label class="item">${eachTask.name}</label>
+</li>`
+    };
     
-];
+    if (eachTask === chekbox.checked) {
+        eachTask.classList.add('tachado')
+    } else {
+        eachTask.classList.remove('tachado')
+    };
+};
 
 
-const handleClick = (event) => {
+
+
+console.log(renderTask);
+renderTask();
+
+
+
+
+
+/* const handleClick = (event) => {
     event.preventDefault();
     let userInput = inputNewTask.value;
-    itemOfTheList.innerHTML += userInput;
-    tasks.push(userInput);
-    console.log(tasks);
-}
+    taskList.innerHTML += `<li>
+    <input type="checkbox">
+    <label class="item">${userInput}</label>
+</li>`
+   /*  tasks.push(userInput); */
 
-/* const crossout = () => {
-    tasks
-}
- */
-/*const newTask = () => {
-    if (checked:true) {
-        tasks.classList.add('tachado');
-    } else {
-        tasks.classList.remove('tachado');
+
+
+
+// condicional para saber si la tarea es completed: true
+
+/* function checkedTask(event) {
+    const checkbox = event.currentTarget;
+    const listItem = checkbox.parentNode('li');
+    
+    if (listItem) {
+        if (checkbox.checked) {
+            listItem.classList.add('tachado');
+        } else {
+            listItem.classList.remove('tachado');
+        }
     }
-}
-};*/
+} */
 
-// hacer otra función con un condicional que añada la clase crossout si se selecciona el input 
 
-addBtn.addEventListener('click', handleClick);
+  
+/* taskList.addEventListener('input', checkedTask); */
+/* addBtn.addEventListener('click', handleClick); */
 
-if (inputList: checkbox.checked) {
-    inputList.classList.add('tachado');
-}
 
-inputList.addEventListener('focus', newTask);
+/* const handleSearch = tasks.filter((task) => {
+    if (task === inputFilter.value ) {
+        taskList.innerHTML += `<li>
+    <input type="checkbox">
+    <label class="item">${inputFilter.value}</label>
+</li>`
+    } else {
+        taskList.innerHTML = "";
+    }
+
+})
+    
+ */
+
+
+
+/* searchBtn.addEventListener('click', handleSearch) */
+
+
