@@ -3,6 +3,9 @@ let tasks = [];
 const taskList = document.querySelector(".task-list");
 const btnFilter = document.querySelector(".js-btn-filter");
 const inputFilter = document.querySelector(".js-text-task-filter");
+const text = document.querySelector('.js-p');
+const btnAdd = document.querySelector('.js-btn-add');
+
 
 function handleFilter(event) {
   event.preventDefault();
@@ -21,6 +24,8 @@ const listenCheck = () => {
 };
 const renderTasks = (tasks) => {
   taskList.innerHTML = "";
+  let completedTasks = tasks.filter(task => task.completed);
+  let uncompletedTasks = tasks.filter(task => !task.completed);
   for (let index = 0; index < tasks.length; index++) {
     /*let classCss = tasks[index].completed ? 'tachado' : null;
     taskList.innerHTML += `<li class= "${classCss}"> 
@@ -39,6 +44,9 @@ const renderTasks = (tasks) => {
     </li>`;
     }
   }
+  console.log(completedTasks);
+  console.log(uncompletedTasks);
+  text.innerHTML = `Tienes ${tasks.length} tareas. ${completedTasks.length} completadas y ${uncompletedTasks.length} por realizar.`;
   listenCheck();
 };
 
@@ -67,4 +75,34 @@ fetch(`https://dev.adalab.es/api/todo`)
     renderTasks(tasks); //pinta el listado en el html (punto 5 del 2.13)
 })
 
+
+function handleAdd(event) {
+    event.preventDefault();
+    fetch('https://dev.adalab.es/api/todo/', {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: JSON.stringify(results.name),
+      })
+        .then((response) => response.json())
+        .then((data) => {
+          if (data.success) {      // seguir a partir de aquí (peticiones al servidor 2)
+            //Completa y/o modifica el código:
+            //Agrega la nueva tarea al listado
+            //Guarda el listado actualizado en el local storage
+            //Visualiza nuevamente el listado de tareas
+            //Limpia los valores de cada input
+          } else {
+            //muestra un mensaje de error.
+          }
+        });
+
+
+}
+
+
+
+
+btnAdd.addEventListener('click', handleAdd);
+
+console.log(text);
 
